@@ -23,19 +23,6 @@ app.get('/', function (req, res) {
 	  }
 });
 
-app.post('/login', upload.array(), function (req, res, next) {
-  console.log(req.body);
-  if (req.session.auth==true) {
-    res.setHeader('Content-Type', 'text/html');
-    res.write('<html><head><meta charset="utf-8"></head><body><p>Você já está logado</p></body></html>');
-    res.end();
-  } else if(req.body.nome=="maicon" && req.body.senha=="teste") {
-		req.session.auth= true;
-    	res.end('welcome to the session demo. refresh!');
-  } else {
-		res.end('try again');
-  }
-});
 
 app.get('/count', function (req, res) {
   if (req.session.count) {
